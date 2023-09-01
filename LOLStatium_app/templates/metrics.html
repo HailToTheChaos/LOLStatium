@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>LOL Statium: Métricas</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'JavaScript/scripts.js' %}"></script>
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+  <!--Fa-filter-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+  <!--Barra de navegación-->
+  <div class="navbar">
+    <div class="menu-icon" onclick="toggle_menu('menu')">&#9776;</div>
+    <a href="{% url 'index' %}" class="menu-item">Inicio</a>
+    <a href="{% url 'matchs' %}" class="menu-item">Historial</a>
+    <a href="{% url 'metrics' %}" class="menu-item">Métricas</a>
+    <a href="{% url 'heatmaps' %}" class="menu-item">Mapa de calor</a>
+    <a href="{% url 'topPicks' %}" class="menu-item">Top Picks</a>
+  </div>
+
+  <!--Menu con más opciones de navegación-->
+  <div class="menu" id="menu">
+    <div class="menu-column">
+      <a href="{% url 'matchs' 2020 %}">Historial de partidas LEC 2020</a>
+      <a href="{% url 'matchs' 2021 %}">Historial de partidas LEC 2021</a>
+      <a href="{% url 'matchs' 2022 %}">Historial de partidas LEC 2022</a>
+      <a href="{% url 'matchs' 2023 %}">Historial de partidas LEC 2023</a>
+    </div>
+    <div class="menu-column">
+      <a href="{% url 'metrics' 2020 %}">Métricas LEC 2020</a>
+      <a href="{% url 'metrics' 2021 %}">Métricas LEC 2021</a>
+      <a href="{% url 'metrics' 2022 %}">Métricas LEC 2022</a>
+      <a href="{% url 'metrics' 2023 %}">Métricas LEC 2023</a>
+    </div>
+    <div class="menu-column">
+      <a href="{% url 'topPicks' 2020 %}">Top Picks LEC 2020</a>
+      <a href="{% url 'topPicks' 2021 %}">Top Picks LEC 2021</a>
+      <a href="{% url 'topPicks' 2022 %}">Top Picks LEC 2022</a>
+      <a href="{% url 'topPicks' 2023 %}">Top Picks LEC 2023</a>
+    </div>
+  </div>
+
+  <!--Se establece un formulario para filtrar por selectores-->
+  <form class="form-grid">
+    <div class="input-group">
+      <label for="team">Equipo</label>
+      <select title="Selector de equipo" id="team-select" py-change="onChangingSelectedTeam()">{{ equipos|safe }}</select>
+    </div>
+
+    <div class="input-group">
+      <label for="player">Jugador</label>
+      <select title="Selector de jugador" id="player-select">{{ jugadores|safe }}</select>
+    </div>
+
+    <div class="input-group">
+      <label for="Season">Split</label>
+      <select title="Selector de temporada" id="Season-select" name="Season">
+        <option value=""></option>
+        <option value="Winter">Winter</option>
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
+      </select>
+    </div>
+
+  </form>
+  <div class="button-group">
+    <input type="button" value="Filtrar" py-click="filterData()">
+    <input type="button" value="Limpiar filtros" py-click="clearFilters()">
+  </div>
+
+
+  <!-- Agrega este código JavaScript en la sección <head> o al final del cuerpo de tu documento HTML -->
+  <div id="header">
+    <h1 id="h1">Métricas {{ year }}<i class="fa fa-filter" aria-hidden="true" style="color:#0059b3" onclick="toggle_menu('filter_menu')"></i></h1>
+    
+  </div>
+  <div id="filter_menu">
+    <label for="Tipo">Tipo:</label>
+    <select id="type-select" name="Tipo">
+      <option value=""></option>
+      <option value="Equipo">Equipo</option>
+      <option value="Jugador">Jugador</option>
+      <option value="Split">Split</option>
+      <option value="KDA">KDA</option>
+    </select>
+    <label for="Asc/Desc">Asc/Desc:</label>
+    <select id="asc-select" name="Tipo">
+      <option value="Ascendente">Ascendente</option>
+      <option value="Descendente">Descendente</option>
+    </select>
+    <input type="button" value="Filtrar" py-click="upDown()">
+    <input type="button" value="Limpiar filtros" py-click="clearUpDown()">
+  </div>
+  <div id="table">
+    {{ tabla|safe }}
+  </div>
+  <!--Pie de página-->
+  <footer id="footer">
+    &copy; 2023 Jaime D.C
+  </footer>
+
+</body>
+
+</html>

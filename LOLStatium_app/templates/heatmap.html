@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>LOL Statium: Mapa de calor</title>
+
+  <!--Links y Scripts de pyScript-->
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'JavaScript/scripts.js' %}"></script>
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+
+  <!--Barra de navegación-->
+  <div class="navbar">
+    <div class="menu-icon" py-click="toggle_menu('menu')">&#9776;</div>
+    <a href="{% url 'index' %}" class="menu-item">Inicio</a>
+    <a href="{% url 'matchs' %}" class="menu-item">Historial</a>
+    <a href="{% url 'metrics' %}" class="menu-item">Métricas</a>
+    <a href="{% url 'heatmaps' %}" class="menu-item">Mapa de calor</a>
+    <a href="{% url 'topPicks' %}" class="menu-item">Top Picks</a>
+  </div>
+
+  <!--Menu con más opciones de navegación-->
+  <div class="menu" id="menu">
+    <div class="menu-column">
+      <a href="{% url 'matchs' 2020 %}">Historial de partidas LEC 2020</a>
+      <a href="{% url 'matchs' 2021 %}">Historial de partidas LEC 2021</a>
+      <a href="{% url 'matchs' 2022 %}">Historial de partidas LEC 2022</a>
+      <a href="{% url 'matchs' 2023 %}">Historial de partidas LEC 2023</a>
+    </div>
+    <div class="menu-column">
+      <a href="{% url 'metrics' 2020 %}">Métricas LEC 2020</a>
+      <a href="{% url 'metrics' 2021 %}">Métricas LEC 2021</a>
+      <a href="{% url 'metrics' 2022 %}">Métricas LEC 2022</a>
+      <a href="{% url 'metrics' 2023 %}">Métricas LEC 2023</a>
+    </div>
+    <div class="menu-column">
+      <a href="{% url 'topPicks' 2020 %}">Top Picks LEC 2020</a>
+      <a href="{% url 'topPicks' 2021 %}">Top Picks LEC 2021</a>
+      <a href="{% url 'topPicks' 2022 %}">Top Picks LEC 2022</a>
+      <a href="{% url 'topPicks' 2023 %}">Top Picks LEC 2023</a>
+    </div>
+  </div>
+
+
+  </div>
+
+  <!--Formulario para el filtrado general-->
+  <form class="form-grid">
+    <div class="input-group">
+      <label for="team">Equipo</label>
+      <select id="team-select" py-change="onChangingSelectedTeam()">{{ equipos|safe }}</select>
+    </div>
+
+    <div class="input-group">
+      <label for="player">Jugador</label>
+      <select id="player-select">{{ jugadores|safe }}</select>
+    </div>
+
+    <div class="input-group">
+      <label for="Split">Temporada</label>
+      <select id="split-select" name="Split">
+        <option value=""></option>
+        <option value="Winter">Winter</option>
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
+      </select>
+    </div>
+  </form>
+  <!--Botones para filtrar o limpiar el filtro-->
+  <div class="button-group">
+    <input type="button" value="Filtrar" py-click="filterData()">
+    <input type="button" value="Limpiar filtros" py-click="clearFilters()">
+  </div>
+
+  <!--Header-->
+  <h1 id="header">Mapa de Calor</h1>
+
+  <!--Contenido de la página-->
+  <div id="box">
+    <!--Etiqueta donde se posiciona la gráfica-->
+    {{ mapa|safe }}
+
+    <!--Formulario para generar los distintos mapas de calor-->
+    <form>
+      <fieldset>
+        <div>
+          <div>
+            <input type="radio" id="Kill" name="options" checked py-click="filterData()" />
+            <label for="Choice1">Kills</label>
+          </div>
+          <div>
+            <input type="radio" id="Death" name="options" py-click="filterData()" />
+            <label for="Choice2">Deaths</label>
+          </div>
+          <div>
+            <input type="radio" id="FirstBlood" name="options" py-click="filterData()" />
+            <label for="Choice3">First Blood</label>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <!--Pie de página-->
+  <footer id="footer">
+    &copy; 2023 Jaime D.C
+  </footer>
+
+</body>
+
+</html>

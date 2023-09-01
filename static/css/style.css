@@ -1,0 +1,270 @@
+/* Estilos general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #161616;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 4em;
+    font-style: bold;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h2 {
+    text-align: center !important;
+    color:aqua;
+}
+
+div.header {
+    display: flex;
+    justify-content: center;
+    align-items:baseline;
+    gap: 20px;
+}
+div.header>i {
+    font-size: 4em;
+}
+
+div#graph svg{
+    align-items: center;
+}
+
+/* Estilos para el menú */
+.navbar {
+    background-color: #0059b3;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    gap: 10%;
+    padding: 0.5rem 1rem;
+    z-index: 1;
+    font-size: x-large;
+    align-items: baseline;
+}
+
+.logo {
+    color: #f2f2f2;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu-icon {
+    color: #f2f2f2;
+    font-size: 1.5rem;
+    cursor: pointer;
+    
+}
+
+.menu-icon:hover {
+    color: gold;
+}
+
+.menu-item {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem; 
+}
+
+.menu-item:hover {
+    color: gold;
+}
+
+.menu {
+    display: none;    
+    top: 100%;
+    background-color: #0059b3;
+    padding: 0.5rem;
+    animation: menuOpen 0.5s ease-in-out forwards;
+    align-items: center;
+}
+
+@keyframes menuOpen {
+    from {
+        top: -100%;
+        opacity: 0.2;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.menu-column {
+    display: inline-block;
+    flex-direction: column;
+    color: white;
+    padding: 0.5rem 1rem;
+    
+}
+
+.menu-column a {
+    display: flex;
+    text-decoration: none;
+    color: #ffffff;   
+    font-size: 18px;
+}
+
+/* Estilo para el filtro general */
+.content {
+    flex: 1;
+    padding: 20px;
+
+}
+
+.form-grid {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    gap: 20px;
+
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+    font-size: x-large;
+}
+
+.input-group select {
+    font-size: 16px;
+    padding: 5px;
+    border: 2px solid #0059b3;
+    color: white;
+}
+
+.input-group option {
+    background-color: #202020;
+    border-color: #0059b3;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: x-large;
+}
+
+input[type="submit"],
+input[type="button"] {
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #0059b3;
+    padding: 10px;
+    border: none;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #0066cc;
+}
+
+/* Estilo para la flecha del selector del formulario*/
+select {
+    background: url("data:image/svg+xml,<svg height='15px' width='15px' viewBox='0 0 16 16' fill='%230059b3' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+    background-position: calc(100% - 0.75rem) center !important;
+    -moz-appearance: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    padding-right: 5rem !important;
+}
+
+#box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+/* Estilo para el Dataframe de las métricas*/
+table.dataframe {
+    width: 100%;
+    justify-content: center;
+}
+
+.column {
+    width:99%;
+    justify-content: center;
+}
+
+table.dataframe th {
+    background-color: #1a1a1a;    
+    color: #ffffff;
+    padding: 5px;
+    text-align: center;
+    font-family: Arial;
+    font-size: x-large;
+}
+
+table.dataframe  tr:nth-child(odd) {
+    background-color: #303030;
+    
+}
+
+table.dataframe td  {
+    padding: 10px;
+    text-align: center;
+    border: 1px #303030;
+    font-size: large;
+}
+
+/* Estilo para el fieldset del mapa de calor*/
+fieldset {
+    border-color: #0059b3;
+    font-size: x-large;
+    font-style: bold;
+}
+
+input[type="radio"] {
+    accent-color: #0059b3;
+}
+
+div#filter_menu {
+    display:none;
+    top: 30px;
+    right: 0;
+    background-color: #303030;
+    border: 2px solid #0059b3;
+    padding: 10px;
+    color: #ffffff;
+}
+
+div#filter_menu > select {
+    color: #ffffff;
+    background-color: #303030;
+}
+
+svg {
+    max-width: auto;
+    height: auto;
+}
+
+/* Estilo para el error 404 */
+.content h1 {
+    color: #ff6600;
+}
+
+.content h2 {
+    color: aqua;
+}
+
+p#error {
+    text-align: center;
+}

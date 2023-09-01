@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página no encontrada</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Mi Sitio</div>
+    </div>
+    
+    <div class="content">
+        <h1>Error 404</h1>
+        <h2>Página no encontrada</h2>
+        <p id="error">Lo sentimos, la página que estás buscando no existe. Por favor, verifica la URL o regresa a la página de inicio.</p>
+        
+        <div class="button-group">
+            <a href="{% url 'index' %}" class="menu-item">Inicio</a>
+            <a href="/contacto" class="menu-item">Contacto</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LOL Statium</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_index.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+<!--Header-->
+    <header id="header">
+        <div class="header-background"></div>
+        <div class="header-content">
+            <h1>Bienvenido a LOL Statium</h1>
+            <p id="welcome-message">Descubre las estadísticas y análisis del League Of Legends</p>
+        </div>
+    </header>
+    
+<!--Nav Menu-->
+    <nav id="menu">
+        <ul>
+            <li><a href="{% url 'matchs' %}">Partidas</a></li>
+            <li><a href="{% url 'heatmaps' %}">Mapa de calor</a></li>
+            <li><a href="{% url 'metrics' %}">Métricas</a></li>
+            <li><a href="{% url 'topPicks' %}">Top Picks</a></li>            
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    
+<!--Contenido de la página-->
+
+<!--Info de los apartados-->
+    <section id="content">
+        <div class="rectangle">
+            <h3>Últimas partidas</h3>
+            <a href="{% url 'matchs' %}">
+                <img class="hover-image" src="{% static 'img/LEC.png' %}" alt="LOL Statium Heatmap">
+                <div class="description">
+                    
+                    <p>Visualiza el historial de las últimas pártidas competitivas.</p>
+                </div>
+            </a>
+        </div>
+        <div class="rectangle">
+            <h3>Mapa de calor</h3>
+            <a href="{% url 'heatmaps' %}">
+                <img class="hover-image" src="{% static 'img/heatmap.png' %}" alt="LOL Statium Heatmap">
+                <div class="description">
+                    
+                    <p>Visualiza los puntos calientes donde los campeones han muerto y los wards han sido colocados.</p>
+                </div>
+            </a>
+        </div>
+        <div class="rectangle"><h3>Métricas</h3>
+            <a href="{% url 'metrics' %}">
+                <img class="hover-image" src="{% static 'img/metrics.png' %}" alt="LOL Statium Metrics">
+                <div class="description">
+                    
+                    <p>Obtén estadísticas generales de la temporada y analiza el desempeño de los jugadores.</p>
+                </div>
+            </a>
+        </div>
+        <div class="rectangle">
+            <h3>Top Picks</h3>
+            <a href="{% url 'topPicks' %}">
+                <img class="hover-image" src="{% static 'img/picksBans.png' %}" alt="LOL Statium Picks & Bans">
+                <div class="description">                    
+                    <p>Explora cuántas veces los jugadores han elegido o descartado campeones en cada partida.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!--Descripción de la página-->
+    <section id="desc">
+        
+        <h2>LOL Statium: Tu fuente de estadísticas de League Of Legends</h2>
+        <p>
+            LOL Statium es tu plataforma completa para explorar y analizar estadísticas del juego League Of Legends.
+            Ya sea que estés buscando información sobre mapas de calor, métricas de jugadores o análisis de Picks y Bans,
+            aquí encontrarás todo lo que necesitas para mejorar tu comprensión y desempeño en el juego.
+        </p>
+        <p>
+            Nuestro equipo recopila datos actualizados y realiza análisis detallados para brindarte una visión
+            profunda del juego. Explora nuestras secciones y descubre nuevas estrategias, toma decisiones informadas y
+            eleva tu nivel de juego en League Of Legends.
+        </p>
+    </section>
+
+    <!--Pie de página-->
+    <footer id="footer">
+        &copy; 2023 Jaime D.C
+    </footer>
+</body>
+
+</html>
