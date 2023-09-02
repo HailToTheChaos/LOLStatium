@@ -10,3 +10,24 @@ Los datos se transforman en un marco de datos para poder manejarlos y guardarlos
 En la página web se muestran diferentes tipos de gráficos que ayudan a entender mejor el juego: mapas que indican dónde ocurren las acciones más importantes, barras que muestran los personajes más usados, tablas que comparan el rendimiento de los jugadores, etc. Estos gráficos se hacen con las librerias Matplotlib y Panel.
 
 ![Django](images/django.png)
+
+## 2 Requisitos
+
+- Python 3.11.4
+- Django 4.2.4
+
+### Instalación de dependencias
+```bash
+pip install -r requirements.txt
+```
+
+## 3 Uso
+La aplicación ofrece las siguientes funcionalidades:
+
+### Población de la base de datos
+
+```bash
+python scripts/init_db.py
+```
+## Créditos
+- Autor: Jaime de la Fuente 
