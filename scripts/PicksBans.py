@@ -2,7 +2,6 @@ import pandas as pd
 from Web_scrap import Scraping
 from Web_scrap import splits
 from tqdm import tqdm
-import os
 
 
 def getPatch(json_data: dict):
@@ -145,6 +144,8 @@ def bans(json_data: dict):
     return pd.concat([df_blue, df_red], axis=1)
 
 # Picks y bans
+
+
 def picksBans(split: str, week: str, blueTeam: str, redTeam: str, json_data: dict) -> pd.DataFrame:
     """Método que genera un DataFrame de una sola partida
 
@@ -180,7 +181,7 @@ def picksBans(split: str, week: str, blueTeam: str, redTeam: str, json_data: dic
     return df_global
 
 
-def getDF_picksBans(league: str, season: str, download: bool = False)->pd.DataFrame:
+def getDF_picksBans(league: str, season: str, download: bool = False) -> pd.DataFrame:
     """Método que obtiene todos los enlaces de una temporada, de una región y un año
     en concreto y los transforma en un Dataframe.
     Finalmente genera un csv
@@ -194,7 +195,7 @@ def getDF_picksBans(league: str, season: str, download: bool = False)->pd.DataFr
     # Se inicializa el df final
     df_final = pd.DataFrame()
 
-    # Se buscan los datos 
+    # Se buscan los datos
     data = Scraping.games(league.upper(), season)
 
     if data:  # Si hay datos
@@ -207,18 +208,20 @@ def getDF_picksBans(league: str, season: str, download: bool = False)->pd.DataFr
 
         # Se recorren las listas para meter los datos en el DF final
         for i in tqdm(range(len(links)), unit='MB', desc=f"Picks y bans {league} {season}", colour='Blue', leave=False):
-            #Se concatenan los DataFrames
+            # Se concatenan los DataFrames
             df_final = pd.concat([df_final,
                                   picksBans(ssons[i], weeks[i], blueTeams[i],
                                             redTeams[i], Scraping.getJson(links[i]))], ignore_index=True)
 
-        #Se añade una columna con la Split a la que pertenece
+        # Se añade una columna con la Split a la que pertenece
         df_final.insert(0, 'Season', season)
 
         # Se crea el csv
         if download:
-            df_final.to_csv('Model\\Download\\Picks&Bans-{}_{}.csv'.format(league.upper(), season), index=False)
-            print('Model\\Datos guardados en: Download\\Picks&Bans-{}_{}.csv'.format(league.upper(), season))
+            df_final.to_csv(
+                'Model\\Download\\Picks&Bans-{}_{}.csv'.format(league.upper(), season), index=False)
+            print(
+                'Model\\Datos guardados en: Download\\Picks&Bans-{}_{}.csv'.format(league.upper(), season))
 
     else:  # Si no los hay
         print('No hay datos')
